@@ -12,6 +12,14 @@ const postRoute = require("./routes/posts");
 const router = express.Router();
 const path = require("path");
 const PORT= process.env.PORT || 8800;
+const cors = require('cors');
+
+// Enable CORS for a specific origin
+const corsOptions = {
+  origin: 'https://64f328fdee3ecd776bbfe5ad--bright-monstera-51ebe2.netlify.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  optionsSuccessStatus: 204,
+};
 
 dotenv.config();
 
@@ -41,6 +49,7 @@ app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
+app.use(cors(corsOptions));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
