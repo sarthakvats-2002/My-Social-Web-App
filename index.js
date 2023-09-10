@@ -16,7 +16,7 @@ const cors = require('cors');
 
 // Enable CORS for a specific origin
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://echoconnectapp.netlify.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   optionsSuccessStatus: 204,
 };
