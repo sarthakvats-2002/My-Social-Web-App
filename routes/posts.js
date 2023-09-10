@@ -32,20 +32,24 @@ router.put("/:id", async(req,res)=>{
 
 //delete a post
 
-router.delete("/:id", async(req,res)=>{
-    try{
-       const post = await Post.findById(req.params.id);
-       if(post.userId === req.body.userId){
-           await post.deleteOne();
-           res.status(200).json("the post has been deleted");
-       }
-       else{
-           res.status(403).json("You can delete only your post");
-       } 
-   }catch(err){
-      res.status(500).json(err);
+router.delete("/:id", async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        console.log("post.userId:", post.userId); // Log post.userId
+        console.log("req.body.userId:", req.body.userId); // Log req.body.userId
+
+        if (post.userId === req.body.userId) {
+            await post.deleteOne();
+            res.status(200).json("The post has been deleted");
+        } else {
+            res.status(403).json("You can delete only your post");
+        }
+    } catch (err) {
+        console.error(err); // Log any error
+        res.status(500).json(err);
     }
 });
+
 
 // like/dislike a post
 
