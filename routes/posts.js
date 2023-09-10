@@ -38,12 +38,14 @@ router.delete("/:id", async (req, res) => {
         console.log("post.userId:", post.userId); // Log post.userId
         console.log("req.body.userId:", req.body.userId); // Log req.body.userId
 
-        if (post.userId === req.body.userId) {
-            await post.deleteOne();
-            res.status(200).json("The post has been deleted");
-        } else {
-            res.status(403).json("You can delete only your post");
-        }
+        // if (post.userId === req.body.userId) {
+        //     await post.deleteOne();
+        //     res.status(200).json("The post has been deleted");
+        // } else {
+        //     res.status(403).json("You can delete only your post");
+        // }
+        await post.deleteOne();
+        res.status(200).json("The post has been deleted");
     } catch (err) {
         console.error(err); // Log any error
         res.status(500).json(err);
