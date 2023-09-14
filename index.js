@@ -16,7 +16,7 @@ const cors = require('cors');
 
 // Enable CORS for a specific origin
 const corsOptions = {
-  origin: 'https://echoconnectapp.netlify.app',
+  origin: 'https://echoconnect.netlify.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   optionsSuccessStatus: 204,
 };
